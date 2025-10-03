@@ -32,7 +32,7 @@ const number = defineModel<string>({ required: true })
     justify-content: center;
     align-items: center;
     border: none;
-    background: var(--keypad-background);
+    background: var(--tertiary);
     border-radius: var(--border-radius);
     padding: 10px 40px;
     color: var(--dark-text);
@@ -50,7 +50,8 @@ const number = defineModel<string>({ required: true })
 }
 
 .darker {
-    background: var(--background);
+    background: var(--gradient-primary);
+    box-shadow: var(--shadow-outer-primary), var(--shadow-inner-primary);
     color: var(--text)
 }
 

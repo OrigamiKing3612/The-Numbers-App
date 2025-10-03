@@ -12,13 +12,13 @@ defineEmits<{
 
 <style scoped>
 .button {
-    background: var(--background);
+    background: var(--gradient-primary);
     color: var(--text);
     border-radius: var(--border-radius);
     font-size: 32px;
     padding: 16px 64px;
     font-weight: bold;
-    box-shadow: inset 0px -2px 2.5px #fff5;
+    box-shadow: var(--shadow-outer-primary), var(--shadow-inner-primary);
     border: none;
 }
 </style>

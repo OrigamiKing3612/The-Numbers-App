@@ -15,7 +15,7 @@ const checked_status = defineModel<'out' | 'in'>('checked_status', { required: t
 
 <style scoped>
 .number-display {
-    border: 2px solid var(--keypad-background);
+    border: 2px solid var(--tertiary);
     margin: 20px 0;
     padding: 10px 20px;
     font-size: 48px;
