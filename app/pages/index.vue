@@ -7,11 +7,13 @@
                     {{ n }}
                 </button>
             </div>
-            <div></div>
-            <button @click="dothething" class="keypad-button">
-                0
+            <button @click="dothething" class="keypad-button darker clear-button">
+                Clear
             </button>
             <button @click="dothething" class="keypad-button">
+                0
+            </Button>
+            <button @click="dothething" class="keypad-button darker">
                 <IconDelete />
             </button>
         </div>
@@ -52,4 +54,13 @@ const dothething = () => {
     justify-items: center;
     /* width: 100%; */
 }
+
+.darker {
+    background: var(--background);
+}
+
+.clear-button {
+    font-size: 18px;
+}
+
 </style>
