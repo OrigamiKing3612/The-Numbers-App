@@ -51,7 +51,7 @@ const number = defineModel<string>({ required: true })
 
 .darker {
     background: var(--gradient-primary);
-    box-shadow: var(--shadow-outer-primary), var(--shadow-inner-primary);
+    box-shadow: var(--shadow-inner-primary);
     color: var(--text)
 }
 
