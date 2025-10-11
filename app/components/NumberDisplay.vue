@@ -2,9 +2,14 @@
     <div class="number-display">
         {{ number }}
     </div>
-    <div class="message" v-if="number != ''">
-        #{{ number }} is currently<br>
-        <span :class="{'in': checked_status === 'in', 'out': checked_status === 'out'}">checked {{ checked_status }}</span>
+    <div class="message">
+        <template v-if="number != ''">
+            #{{ number }} is currently
+            <br>
+            <span :class="{ 'in': checked_status === 'in', 'out': checked_status === 'out' }" v-if="number != ''">
+                checked {{ checked_status }}
+            </span>
+        </template>
     </div>
 </template>
 
@@ -38,12 +43,12 @@ const checked_status = defineModel<'out' | 'in'>('checked_status', { required: t
     margin-bottom: 15px;
     color: var(--dark-text);
 
-.in {
-    color: var(--primary-alt);
-}
+    .in {
+        color: var(--primary-alt);
+    }
 
-.out {
-    color: var(--primart);
-}
+    .out {
+        color: var(--primary);
+    }
 }
 </style>

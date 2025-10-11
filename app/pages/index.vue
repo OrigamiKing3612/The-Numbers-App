@@ -1,6 +1,5 @@
 <template>
     <div class="container">
-        <h1>The Numbers App</h1>
         <NumberDisplay v-model="number" v-model:checked_status="checked_status" />
         <ButtonGrid v-model="number" />
         <Button @click="dothething" class="checkin-button">
