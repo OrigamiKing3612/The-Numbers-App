@@ -39,6 +39,7 @@ const number = defineModel<string>({ required: true })
     font-weight: bold;
     font-size: 48px;
     height: 100%;
+    width: 70px;
 }
 
 .button-grid {
@@ -56,6 +57,6 @@ const number = defineModel<string>({ required: true })
 }
 
 .clear-button {
-    font-size: 10px;
+    font-size: 25px;
 }
 </style>

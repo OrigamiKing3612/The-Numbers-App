@@ -3,7 +3,7 @@
         <NumberDisplay v-model="number" v-model:checked_status="checked_status" />
         <ButtonGrid v-model="number" />
         <Button @click="dothething" class="checkin-button">
-            Check In
+            Check in
         </Button>
     </div>
 </template>
@@ -29,5 +29,6 @@ const dothething = () => {
     margin-top: 30px;
     user-select: none;
     width: 100%;
+    height: 80px;
 }
 </style>
