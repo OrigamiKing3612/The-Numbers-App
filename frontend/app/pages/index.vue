@@ -18,7 +18,7 @@ const dothething = () => {
 
 </script>
 
-<style scoped lan>
+<style scoped>
 .container {
     display: flex;
     flex-direction: column;
