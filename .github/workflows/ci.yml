@@ -30,8 +30,6 @@ jobs:
           cache-dependency-path: frontend/pnpm-lock.yaml
       - name: Install dependencies
         run: pnpm install
-      - name: Prepare
-        run: pnpm prepare
       - name: Typecheck
         run: pnpm typecheck
   build-frontend:
