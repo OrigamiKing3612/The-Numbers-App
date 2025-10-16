@@ -40,6 +40,7 @@ const number = defineModel<string>({ required: true })
     font-size: 48px;
     height: 100%;
     width: 70px;
+    width: 110px;
 }
 
 .button-grid {
