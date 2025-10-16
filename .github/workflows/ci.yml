@@ -14,6 +14,9 @@ concurrency:
 jobs:
   typecheck:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./frontend
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
@@ -24,12 +27,14 @@ jobs:
         with:
           node-version: 22
           cache: "pnpm"
-      - run: cd frontend
       - run: pnpm install
       - run: pnpm prepare
       - run: pnpm typecheck
   build-frontend:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./frontend
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -40,7 +45,6 @@ jobs:
         with:
           node-version: 22
           cache: "pnpm"
-      - run: cd frontend
       - run: pnpm install
       - run: pnpm build --no-minify --no-sourcemap
       - name: Upload build output
@@ -50,3 +54,29 @@ jobs:
           path: .output
           if-no-files-found: error
           include-hidden-files: true
+  build-backend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./backend
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.25.1'
+      - name: Cache Go modules
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/go-build
+            ~/go/pkg/mod
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
+      - name: Install dependencies
+        run: go mod download
+      - name: Build binary
+        run: |
+          go build ./cmd/main/main.go
