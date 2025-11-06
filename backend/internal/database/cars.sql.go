@@ -9,13 +9,36 @@ import (
 	"context"
 )
 
-const getAllCars = `-- name: GetAllCars :exec
+const getAllCars = `-- name: GetAllCars :many
 select id, last_name, number, checked_in from cars
 `
 
-func (q *Queries) GetAllCars(ctx context.Context) error {
-	_, err := q.exec(ctx, q.getAllCarsStmt, getAllCars)
-	return err
+func (q *Queries) GetAllCars(ctx context.Context) ([]Car, error) {
+	rows, err := q.query(ctx, q.getAllCarsStmt, getAllCars)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []Car
+	for rows.Next() {
+		var i Car
+		if err := rows.Scan(
+			&i.ID,
+			&i.LastName,
+			&i.Number,
+			&i.CheckedIn,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
 }
 
 const updateCheckedIn = `-- name: UpdateCheckedIn :exec

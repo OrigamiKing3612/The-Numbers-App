@@ -1,14 +1,19 @@
 package server
 
-import "database/sql"
+import (
+	"database/sql"
+
+	"github.com/OrigamiKing3612/The-Numbers-App/internal/database"
+)
 
 type Server struct {
-	DB     *sql.DB
-	Config *Config
+	DB      *sql.DB
+	Config  *Config
+	Queries *database.Queries
 }
 
-func NewServer(DB *sql.DB, Config *Config) *Server {
-	return &Server{DB, Config}
+func NewServer(DB *sql.DB, Config *Config, Queries *database.Queries) *Server {
+	return &Server{DB, Config, Queries}
 }
 
 type Config struct {

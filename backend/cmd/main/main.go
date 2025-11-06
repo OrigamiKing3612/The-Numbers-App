@@ -11,6 +11,7 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/OrigamiKing3612/The-Numbers-App/internal/database"
 	"github.com/OrigamiKing3612/The-Numbers-App/internal/routes"
 	"github.com/OrigamiKing3612/The-Numbers-App/internal/server"
 	"github.com/joho/godotenv"
@@ -43,11 +44,11 @@ func main() {
 	}
 	log.Printf("Connected to SQLite!\n")
 
-	// queries := database.New(db)
+	queries := database.New(db)
 
 	config := server.NewConfig(debug)
 
-	server := server.NewServer(db, config)
+	server := server.NewServer(db, config, queries)
 
 	handler := routes.InitRoutes(server)
 

@@ -14,6 +14,7 @@ func InitRoutes(server *server.Server) http.Handler {
 	cars := cars.New(server)
 
 	mux.Handle("POST /login", auth.Login())
+	mux.Handle("GET /get/cars", cars.GetAll())
 	mux.Handle("PUT /update/checked_in", cars.UpdateCheckedIn())
 
 	return mux
