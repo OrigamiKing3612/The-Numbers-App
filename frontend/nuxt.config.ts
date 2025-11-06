@@ -1,5 +1,8 @@
 export default defineNuxtConfig({
     compatibilityDate: '2025-07-15',
+    experimental: {
+        viteEnvironmentApi: true
+    },
     devtools: { enabled: true },
     css: ['@/assets/styles/main.css'],
 
